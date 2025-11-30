@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<link rel="manifest" href="manifest.json">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="apple-touch-icon" href="icone-app.png">
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   	 <title>Para Meu Amor</title>
+   	 <style>
+        /* ESTILO (CSS) - A APARÊNCIA */
+        body {
+            background-color: #ffe6e6; /* Fundo rosinha */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #d6336c;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 90%; /* Ocupa 90% da tela do celular */
+            max-width: 400px; /* Não fica gigante no PC */
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        #foto-do-dia {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .mensagem {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .contador {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Eu te amo meu amor! ❤️</h1>
+        
+        <img id="foto-do-dia" src="" alt="Nossa foto">
+
+        <p class="mensagem" id="texto-mensagem">Carregando mensagem...</p>
+
+        <div class="contador" id="contador-dias">Calculando...</div>
+    </div>
+
+   <script>
+        /* LÓGICA (JAVASCRIPT) - O CÉREBRO DO APP */
+
+        // --- CONFIGURAÇÃO 1: DATA DO INÍCIO ---
+        // Formato: AAAA-MM-DD. A data do namoro é crucial aqui.
+        const dataInicio = new Date("2025-04-18"); 
+
+        // --- CONFIGURAÇÃO 2: MENSAGENS E FOTOS ---
+        // (Sua lista de 31 declarações permanece a mesma)
+        const declaracoes = [
+          { foto: "foto1.jpg", texto: "Você é a razão do meu sorriso todos os dias. Meu plano é ficar ao seu lado para sempre." },
+          { foto: "foto2.jpg", texto: "Cada dia ao seu lado é um presente que eu quero abrir todos os dias da minha vida." },
+          { foto: "foto3.jpg", texto: "Te amo mais do que ontem e menos que amanhã. O nosso futuro é onde eu quero estar." },
+          { foto: "foto4.jpg", texto: "O melhor lugar do mundo é dentro do seu abraço. É aqui que eu quero envelhecer." },
+          { foto: "foto5.jpg", texto: "Você é o meu porto seguro e a minha maior aventura. Que a nossa jornada não tenha fim." },
+          { foto: "foto6.jpg", texto: "O seu olhar me dá forças para tudo. Eu escolho você todos os dias, para o resto da vida." },
+          { foto: "foto7.jpg", texto: "Minha melhor amiga, minha eterna namorada. Nada mais importa além de nós dois." },
+          { foto: "foto8.jpg", texto: "Nossa história é a minha favorita. Que venham mais e mais capítulos de felicidade e amor!" },
+          { foto: "foto9.jpg", texto: "Com você, a vida é uma festa. Prometo dançar com você até a última música." },
+          { foto: "foto10.jpg", texto: "Você me completa de um jeito que eu nem sabia que era possível. É você, sempre e para sempre." },
+          { foto: "foto11.jpg", texto: "Amo a sua risada, amo o seu cheiro, amo a forma como me olha. Amo cada detalhe seu!" },
+          { foto: "foto12.jpg", texto: "Você me ensinou o que é amar de verdade. Meu coração é seu e de mais ninguém." },
+          { foto: "foto13.jpg", texto: "Seu amor é o meu norte. Que possamos trilhar esse caminho lindo lado a lado eternamente." },
+          { foto: "foto14.jpg", texto: "Você é a mulher dos meus sonhos e a realidade que eu mais amo. Quero a eternidade ao seu lado." },
+          { foto: "foto15.jpg", texto: "Sou grato por cada momento que compartilhamos. Que a nossa gratidão se transforme em amor eterno." },
+          { foto: "foto16.jpg", texto: "Minha vida só começou a fazer sentido depois que você chegou. Obrigada por existir, meu amor." },
+          { foto: "foto17.jpg", texto: "O 'sim' que demos um ao outro ecoa em cada dia. Que ele seja repetido até o fim de nossos dias." },
+          { foto: "foto18.jpg", texto: "Você me inspira a ser a melhor versão de mim. Você merece todo o meu amor e dedicação." },
+          { foto: "foto19.jpg", texto: "Você é a paz que eu procuro e a aventura que eu preciso. Juntos, somos invencíveis." },
+          { foto: "foto20.jpg", texto: "Dizem que o amor verdadeiro existe e eu encontrei a prova em você. Te quero para sempre, minha vida." },
+          { foto: "foto21.jpg", texto: "Quero construir uma vida inteira de memórias felizes ao seu lado. Vamos começar hoje?" },
+          { foto: "foto22.jpg", texto: "Se o paraíso existe, ele está onde você está. Ficar com você é o meu lugar favorito no mundo." },
+          { foto: "foto23.jpg", texto: "Nosso amor é forte, resiliente e lindo. Ele vai durar para sempre, eu sei disso." },
+          { foto: "foto24.jpg", texto: "Você é o sol da minha manhã, a estrela da minha noite e a batida constante do meu coração." },
+          { foto: "foto25.jpg", texto: "Por você, eu faria tudo de novo. E faria melhor. Meu amor por você é infinito." },
+          { foto: "foto26.jpg", texto: "Você é mais que a minha esposa, é o meu lar. E eu quero voltar para casa todos os dias para te encontrar." },
+          { foto: "foto27.jpg", texto: "Nossos caminhos se cruzaram por um motivo, e esse motivo é o amor. O mais lindo de todos." },
+          { foto: "foto28.jpg", texto: "Que a gente continue colecionando 'para sempre' ao lado um do outro. Eu te amo incondicionalmente!" },
+          { foto: "foto29.jpg", texto: "Sua felicidade é a minha prioridade. Viver por você e para você é a minha maior alegria." },
+          { foto: "foto30.jpg", texto: "Amo o passado que tivemos, amo o presente que vivemos e mal posso esperar pelo futuro que nos espera." },
+          { foto: "foto31.jpg", texto: "Meu amor, para terminar o mês: você é meu tudo. O nosso amor não tem fim, é eterno. Eu te amo!" }
+        ];
+
+        // 1. Lógica do Contador (CORRIGIDA)
+        function atualizarContador() {
+            const hoje = new Date();
+            
+            // Cria cópias das datas e ZERA o horário para evitar erro de DST/Fuso horário
+            const dataInicioUTC = new Date(Date.UTC(dataInicio.getFullYear(), dataInicio.getMonth(), dataInicio.getDate()));
+            const hojeUTC = new Date(Date.UTC(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()));
+
+            // Milissegundos em um dia (fixo e sem chance de erro)
+            const MS_POR_DIA = 1000 * 60 * 60 * 24;
+
+            // Calcula a diferença em milissegundos e divide
+            const diferencaTempo = hojeUTC - dataInicioUTC;
+            
+            // Arredonda para baixo para garantir que a contagem só avance à meia-noite
+            const diasJuntos = Math.floor(diferencaTempo / MS_POR_DIA); 
+
+            document.getElementById("contador-dias").innerText = `Estamos juntos há ${diasJuntos} dias`;
+        }
+
+        // 2. Lógica da Mensagem Diária (Perfeita - Mantida)
+        function atualizarMensagem() {
+            // Usa o dia do mês (1 a 31) para escolher a mensagem
+            const diaHoje = new Date().getDate();
+            
+            // O uso do operador módulo (%) é o que garante que as 31 mensagens ciclem 
+            // e sejam repetidas se o mês tiver menos dias ou no próximo ciclo.
+            const indice = diaHoje % declaracoes.length; 
+
+            const conteudo = declaracoes[indice];
+            
+            document.getElementById("foto-do-dia").src = conteudo.foto;
+            document.getElementById("texto-mensagem").innerText = `"${conteudo.texto}"`;
+        }
+
+        // Rodar as funções
+        atualizarContador();
+        atualizarMensagem();
+
+    </script>
