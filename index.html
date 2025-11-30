@@ -11,6 +11,13 @@
    	 <style>
         /* ESTILO (CSS) - A APARÊNCIA */
         body {
+			    width: 100%;
+    			height: 100%;
+   			 	margin: 0;
+    			padding: 0;
+    			overflow: hidden; /* Impede rolagem vertical e horizontal */
+    			position: fixed;  /* Mantém tudo travado na tela */
+
             background-color: #ffe6e6; /* Fundo rosinha */
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -30,6 +37,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             width: 100%; /* Ocupa 90% da tela do celular */
             max-width: 400px; /* Não fica gigante no PC */
+			max-height: 100vh;
+   			overflow: hidden;
         }
 
         h1 {
@@ -158,6 +167,7 @@
         atualizarMensagem();
 
     </script>
+
 
 
 
