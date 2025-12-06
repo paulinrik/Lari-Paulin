@@ -10,37 +10,30 @@
    	 <title>Lari+Paulin</title>
    	 <style>
         /* ESTILO (CSS) - A APARÊNCIA */
-        body {
-			    width: 100%;
-    			height: 100%;
-   			 	margin: 0;
-    			padding: 0;
-    			overflow: hidden; /* Impede rolagem vertical e horizontal */
-    			position: fixed;  /* Mantém tudo travado na tela */
+      body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffe6e6;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* não centraliza verticalmente */
+    min-height: 100vh;
+    text-align: center;
+    color: #d6336c;
+    overflow-y: auto; /* Liberado — JS vai controlar */
+}
 
-            background-color: #ffe6e6; /* Fundo rosinha */
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            text-align: center;
-            color: #d6336c;
-        }
-
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            width: 100%; /* Ocupa 90% da tela do celular */
-            max-width: 400px; /* Não fica gigante no PC */
-			max-height: 100vh;
-   			overflow: hidden;
-        }
-
+       .container {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    overflow: visible; /* precisa deixar crescer */
+}
         h1 {
             font-size: 1.5rem;
             margin-bottom: 10px;
@@ -166,7 +159,27 @@
         atualizarContador();
         atualizarMensagem();
 
-    </script>
+    <script>
+function ajustarRolagem() {
+    const conteudo = document.querySelector(".container");
+    const alturaConteudo = conteudo.scrollHeight;
+    const alturaTela = window.innerHeight;
+
+    if (alturaConteudo <= alturaTela) {
+        document.body.style.overflow = "hidden";  // trava quando cabe
+    } else {
+        document.body.style.overflow = "auto";    // libera quando precisa rolar
+    }
+}
+
+// rodar depois de carregar imagem
+document.getElementById("foto-do-dia").addEventListener("load", ajustarRolagem);
+
+// rodar inicialmente
+window.addEventListener("load", ajustarRolagem);
+window.addEventListener("resize", ajustarRolagem);
+</script>
+
 
 
 
