@@ -10,7 +10,20 @@
    	 <title>Lari+Paulin</title>
    	 <style>
         /* ESTILO (CSS) - A APARÊNCIA */
- body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; /* Impede rolagem vertical e horizontal */ position: fixed; /* Mantém tudo travado na tela */ background-color: #ffe6e6; /* Fundo rosinha */ font-family: 'Arial', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; color: #d6336c; }
+ body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffe6e6;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* não centraliza verticalmente */
+    min-height: 100vh;
+    text-align: center;
+    color: #d6336c;
+    overflow-y: auto; /* Liberado — JS vai controlar */
+}
 
        .container {
     background: white;
@@ -142,11 +155,12 @@
             document.getElementById("texto-mensagem").innerText = `"${conteudo.texto}"`;
         }
 
-        // Rodar as funções
-        atualizarContador();
-        atualizarMensagem();
+// Rodar as funções
+atualizarContador();
+atualizarMensagem();
+</script>
 
-    <script>
+<script>
 function ajustarRolagem() {
     const conteudo = document.querySelector(".container");
     const alturaConteudo = conteudo.scrollHeight;
@@ -166,6 +180,7 @@ document.getElementById("foto-do-dia").addEventListener("load", ajustarRolagem);
 window.addEventListener("load", ajustarRolagem);
 window.addEventListener("resize", ajustarRolagem);
 </script>
+
 
 
 
